@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="./assets/ChatGPT Image 26 de ago. de 2025, 13_07_29.png"
+      type="image/x-icon"
+    />
+    <title>Achados Marketplaces</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f8f8f8;
+        box-sizing: border-box;
+      }
+
+      header {
+        text-align: center;
+        background: #222;
+        color: #fff;
+        padding: 30px 15px;
+      }
+
+      header img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      header h1 {
+        margin: 10px 0 5px;
+      }
+
+      header p {
+        margin: 5px 0;
+        font-size: 14px;
+      }
+
+      .social {
+        margin-top: 10px;
+      }
+
+      .social a {
+        margin: 0 8px;
+        color: #fff;
+        text-decoration: none;
+        font-size: 18px;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 20px auto;
+        padding: 15px;
+        
+      }
+
+      /* Banner */
+      .banner {
+        width: 100%;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .banner img {
+        width: 100%;
+        max-height: 200px;
+        object-fit: cover;
+        border-radius: 12px;
+      }
+
+      .search-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        box-sizing: border-box;
+       
+      }
+
+      .search-box input {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 2px solid #ccc;
+        border-radius: 8px;
+        margin-bottom: 20px;
+      }
+
+      .filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      select,
+      .filters input {
+        padding: 10px;
+        font-size: 15px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+      }
+
+      .section-title {
+        font-size: 20px;
+        margin: 20px 0 10px;
+        font-weight: bold;
+      }
+
+      .products {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+      }
+
+      .card {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 15px;
+        text-align: center;
+        position: relative;
+        transition: transform 0.2s;
+      }
+
+      
+
+      .card img {
+        width: 100%;
+        height: 150px;
+        object-fit: contain;
+        border-radius: 8px;
+      }
+
+      .card h3 {
+        font-size: 18px;
+        margin: 10px 0;
+      }
+
+      .card p {
+        font-size: 14px;
+        color: #555;
+        height: 40px;
+        overflow: hidden;
+      }
+
+      .card a {
+        display: inline-block;
+        margin-top: 10px;
+        background: #007bff;
+        color: #fff;
+        padding: 10px 15px;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background 0.3s;
+      }
+
+      .card a:hover {
+        background: #0056b3;
+      }
+
+      .stars {
+        color: #ffd700;
+        margin: 5px 0;
+        font-size: 16px;
+      }
+      /* Botão único de compartilhamento */
+      .share-wrapper {
+        position: relative;
+        margin-top: 10px;
+      }
+
+      .share-btn {
+        background: #007bff;
+        color: #fff;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background 0.3s;
+      }
+
+      .share-btn:hover {
+        background: #0056b3;
+      }
+
+      /* Menu que aparece ao clicar */
+      .share-menu {
+        display: none;
+        position: absolute;
+        top: 40px;
+        left: 0;
+        background: #fff;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 5px;
+        z-index: 100;
+        white-space: nowrap;
+      }
+
+      .share-menu a {
+        display: inline-block;
+        margin: 5px;
+        font-size: 16px;
+        color: #ffffff;
+        text-decoration: none;
+      }
+
+      .share-menu a:hover {
+        color: #007bff;
+      }
+
+      #btn-whats {
+        background-color: rgb(29, 153, 13);
+      }
+
+      #btn-whats:hover {
+        color: #000;
+        background-color: #fff;
+        border: 1px solid rgb(29, 153, 13);
+      }
+
+      /* Badge de promoção */
+      .badge {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: #ff3b3b;
+        color: #fff;
+        padding: 5px 10px;
+        font-size: 12px;
+        font-weight: bold;
+        border-radius: 6px;
+      }
+
+      /* Newsletter */
+      .newsletter {
+        background: #222;
+        color: #fff;
+        padding: 20px;
+        border-radius: 12px;
+        text-align: center;
+        margin: 30px 0;
+      }
+
+      .newsletter h3 {
+        font-size: 2rem;
+      }
+
+      .newsletter input[type="email"] {
+        padding: 10px;
+        width: 250px;
+        border: none;
+        border-radius: 6px;
+        margin-right: 10px;
+      }
+
+      .newsletter button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 6px;
+        background: #ffd700;
+        color: #000;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      .newsletter button:hover {
+        background: #ffc107;
+      }
+
+      .newsletter-message {
+        margin-top: 10px;
+        font-size: 14px;
+      }
+
+      .btn-copy {
+        padding: 10px 15px;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img
+        src="./assets//ChatGPT Image 26 de ago. de 2025, 13_07_29.png"
+        alt="Foto de perfil"
+      />
+      <h1>Achados Marketplaces</h1>
+      <p>Produtos selecionados para você!</p>
+      <div class="social">
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">YouTube</a>
+      </div>
+    </header>
+
+    <div class="container">
+      <!-- Banner -->
+      <div class="banner">
+        <img
+          src="./assets/Gemini_Generated_Image_b9hbqsb9hbqsb9hb.png"
+          alt="Banner de promoção"
+        />
+      </div>
+
+      <!-- Barra de pesquisa -->
+      <div class="search-box">
+        <input type="text" id="search" placeholder="Pesquisar produto..." />
+      </div>
+
+      <!-- Categorias e filtros -->
+      <div class="filters">
+        <select id="category">
+          <option value="all">Todas Categorias</option>
+          <option value="eletronicos">Eletrônicos</option>
+          <option value="moda">Moda</option>
+          <option value="casa">Casa</option>
+        </select>
+
+        <select id="priceFilter">
+          <option value="all">Todos os Preços</option>
+          <option value="low">Até R$50</option>
+          <option value="medium">R$50 - R$200</option>
+          <option value="high">Acima de R$200</option>
+        </select>
+
+        <div
+          id="ratingFilterButtons"
+          style="display: flex; gap: 5px; margin-bottom: 20px"
+        >
+          <button class="star-btn" data-rating="all">Todas</button>
+          <button class="star-btn" data-rating="1">★ ou mais</button>
+          <button class="star-btn" data-rating="2">★★ ou mais</button>
+          <button class="star-btn" data-rating="3">★★★ ou mais</button>
+          <button class="star-btn" data-rating="4">★★★★ ou mais</button>
+          <button class="star-btn" data-rating="5">★★★★★</button>
+        </div>
+      </div>
+
+      <!-- Produtos em destaque -->
+      <div class="section-title">Produtos em Destaque</div>
+      <div class="products" id="featuredProducts"></div>
+
+      <!-- Lista de produtos normal -->
+      <div class="section-title">Todos os Produtos</div>
+      <div class="products" id="productList"></div>
+
+      <!-- Newsletter -->
+      <div class="newsletter">
+        <h3>Inscreva-se na nossa Newsletter</h3>
+        <p>Receba novidades e promoções diretamente no seu e-mail!</p>
+
+        <!-- Formulário Google Forms -->
+        <form
+          id="newsletterForm"
+          action="https://docs.google.com/forms/d/e/1FAIpQLSe8I1rDiwN_O8Q_2K5b_ZIYagUXiATHBahtCYVKpTv8UlyJlQ/formResponse
+"
+          method="POST"
+          target="_blank"
+        >
+          <input
+            type="email"
+            name="entry.100869557"
+            placeholder="Seu e-mail"
+            required
+          />
+          <button type="submit">Inscrever-se</button>
+        </form>
+
+        <p class="newsletter-note">
+          Não se preocupe, não compartilharemos seu e-mail!
+        </p>
+      </div>
+    </div>
+
+    <script>
+
+
+
+      const products = [
+        {
+          id: 1,
+          name: "Tomada De Energia Extensível, Saída Extensível",
+          category: "eletronicos",
+          price: 80,
+          img: "./assets/D_NQ_NP_2X_616463-MLB90850184655_082025-F.webp",
+          link: "https://mercadolivre.com/sec/2D4QqNA",
+          rating: 4,
+          featured: true,
+          promo: true,
+        },
+        {
+          id: 2,
+          name: "Suporte Braço Articulado De Mesa Para Celular Tablet Tab iPad Kindle Escrivaninha",
+          category: "moda",
+          price: 40,
+          img: "./assets/br-11134207-7r98p-lls4gyaltvlj71.webp",
+          link: "https://s.shopee.com.br/40WfhB4Btl",
+          rating: 3,
+          featured: false,
+          promo: false,
+        },
+        {
+          id: 3,
+          name: "Dispositivo Anti-asfixia Automático Com Kit De Primeiros",
+          category: "casa",
+          price: 150,
+          img: "./assets/D_NQ_NP_967648-MLB87676143024_072025-O.webp",
+          link: "https://mercadolivre.com/sec/29jkZ7R",
+          rating: 5,
+          featured: true,
+          promo: true,
+        },
+        {
+          id: 4,
+          name: "Organizador Over The Door Homelux Theory Heavy Duty 55x14x6,",
+          category: "eletronicos",
+          price: 3500,
+          img: "./assets/organizador-na-porta.webp",
+          link: "https://mercadolivre.com/sec/1nemKy3",
+          rating: 4,
+          featured: false,
+          promo: false,
+        },
+        {
+          id: 5,
+          name: "Mini Rodo Esfregão Esponja Absorvente Portátil Limpeza Multifuncional Mesa Janela",
+          category: "moda",
+          price: 220,
+          img: "./assets/mini-mop-para-pia.webp",
+          link: "https://s.shopee.com.br/30e8Vlsgw8",
+          rating: 5,
+          featured: true,
+          promo: true,
+        },
+      ];
+
+      const productList = document.getElementById("productList");
+      const featuredProducts = document.getElementById("featuredProducts");
+      const searchInput = document.getElementById("search");
+      const categorySelect = document.getElementById("category");
+      const priceFilter = document.getElementById("priceFilter");
+
+      let ratingMin = "all"; // variável global para armazenar a avaliação mínima
+
+      const ratingButtons = document.querySelectorAll(".star-btn");
+
+      ratingButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          ratingMin = btn.getAttribute("data-rating");
+          ratingButtons.forEach((b) => {
+            b.style.background = "#fff";
+            b.style.color = "#000";
+          });
+          btn.style.background = "#007bff";
+          btn.style.color = "#fff";
+          renderProducts();
+        });
+      });
+
+      function renderStars(rating) {
+        let stars = "";
+        for (let i = 1; i <= 5; i++) {
+          stars += i <= rating ? "★" : "☆";
+        }
+        return `<div class="stars">${stars}</div>`;
+      }
+
+      function renderCards(container, items, type) {
+        container.innerHTML = "";
+        if (items.length === 0) {
+          container.innerHTML = "<p>Nenhum produto encontrado.</p>";
+          return;
+        }
+
+        items.forEach((p) => {
+          const encodedLink = encodeURIComponent(p.link);
+          const encodedName = encodeURIComponent(p.name);
+          const promoBadge = p.promo ? `<div class="badge">Promoção</div>` : "";
+          const card = `
+      <div class="card">
+        ${promoBadge}
+        <img src="${p.img}" alt="${p.name}">
+        <h3>${p.name}</h3>
+        ${renderStars(p.rating)}
+        
+        <a href="${p.link}" target="_blank">Ver Produto</a>
+        <div class="share-wrapper">
+          <button class="share-btn" onclick="toggleShareMenu('${type}-share-${
+            p.id
+          }')">Compartilhar</button>
+          <div class="share-menu" id="${type}-share-${p.id}">
+            <a id="btn-whats" href="https://api.whatsapp.com/send?text=${encodedName}%20${encodedLink}" target="_blank">WhatsApp</a>
+            
+              <button class="btn-copy" onclick="copyLink('${p.link}')">Copiar link</button>
+          </div>
+        </div>
+      </div>
+    `;
+          container.innerHTML += card;
+        });
+      }
+
+      // Função para abrir/fechar o menu de compartilhamento
+      function toggleShareMenu(id) {
+        const menu = document.getElementById(id);
+        menu.style.display = menu.style.display === "block" ? "none" : "block";
+      }
+
+      function renderProducts() {
+        const search = searchInput.value.toLowerCase();
+        const category = categorySelect.value;
+        const price = priceFilter.value;
+
+        // Produtos destacados
+        const featured = products.filter((p) => p.featured);
+        renderCards(featuredProducts, featured, "featured");
+
+        // Produtos normais filtrados
+        const filtered = products.filter((p) => {
+          const matchSearch = p.name.toLowerCase().includes(search);
+          const matchCategory = category === "all" || p.category === category;
+          let matchPrice = true;
+          if (price === "low") matchPrice = p.price <= 50;
+          if (price === "medium") matchPrice = p.price > 50 && p.price <= 200;
+          if (price === "high") matchPrice = p.price > 200;
+
+          let matchRating = true;
+          if (ratingMin !== "all")
+            matchRating = p.rating === parseInt(ratingMin);
+
+          return matchSearch && matchCategory && matchPrice && matchRating;
+        });
+
+        renderCards(productList, filtered, "product");
+      }
+
+      searchInput.addEventListener("input", renderProducts);
+      categorySelect.addEventListener("change", renderProducts);
+      priceFilter.addEventListener("change", renderProducts);
+
+      renderProducts();
+
+      document.addEventListener("click", (e) => {
+        const allMenus = document.querySelectorAll(".share-menu");
+        allMenus.forEach((menu) => {
+          if (
+            !menu.contains(e.target) &&
+            !menu.previousElementSibling.contains(e.target)
+          ) {
+            menu.style.display = "none";
+          }
+        });
+      });
+
+      
+    </script>
+    <script>
+function copyLink(link) {
+  navigator.clipboard.writeText(link)
+    .then(() => {
+      alert('Link copiado para a área de transferência!');
+    })
+    .catch(err => {
+      console.error('Erro ao copiar o link: ', err);
+    });
+}
+</script>
+  </body>
+</html>
