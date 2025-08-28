@@ -122,19 +122,20 @@
         background: #fff;
         border-radius: 12px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        padding: 15px;
         text-align: center;
         position: relative;
         transition: transform 0.2s;
       }
 
-      
-
       .card img {
         width: 100%;
         height: 150px;
-        object-fit: contain;
+        object-fit: cover;
         border-radius: 8px;
+      }
+
+      .card-descricao {
+        padding: 15px;
       }
 
       .card h3 {
@@ -488,13 +489,53 @@
         },
         {
           id: 9,
-          name: "3pcs Marcadores de página, Marcador Inteligente Silicone, Simples leitura marcador clipe,",
+          name: "3pcs Marcadores de página, Marcador Inteligente Silicone, Simples leitura marcador clipe",
           category: "acessorio",
           img: "./assets/marcador-de-paginas.webp",
           link: "https://s.shopee.com.br/10XDG57mE",
           rating: 5,
           featured: false,
           promo: true,
+        },
+        {
+          id: 10,
+          name: "Garrafa de Água Acrilico Transparentes Formato Caixa de Leite Portatil 500ml -1000ml",
+          category: "casa",
+          img: "./assets/garrafa-transparente.webp",
+          link: "https://s.shopee.com.br/8pbwFhR0nh",
+          rating: 5,
+          featured: false,
+          promo: true,
+        },
+        {
+          id: 11,
+          name: "Quebrador De Ovo Prático Inox Para Cozinha Doméstica Cores Sortidas",
+          category: "casa",
+          img: "./assets/abridor-de-ovos.webp",
+          link: "https://s.shopee.com.br/4fmNIIo9zC",
+          rating: 4,
+          featured: false,
+          promo: false,
+        },
+        {
+          id: 12,
+          name: "Espremedor Elétrico Laranja Limão Frutas Fazer Sucos Recarregável usb",
+          category: "casa",
+          img: "./assets/espremedor-eletrico-laranja.webp",
+          link: "https://s.shopee.com.br/70AI54KMLJ",
+          rating: 5,
+          featured: false,
+          promo: false,
+        },
+        {
+          id: 13,
+          name: "Organizador De Geladeira Com Cesto Triplo P/ Frutas Verduras",
+          category: "casa",
+          img: "./assets/cesto-separador-de-frutas.webp",
+          link: "https://s.shopee.com.br/BJxxe3wab",
+          rating: 5,
+          featured: false,
+          promo: false,
         },
       ];
 
@@ -545,19 +586,21 @@
           const card = `
       <div class="card">
         ${promoBadge}
-        <img src="${p.img}" alt="${p.name}">
-        <h3>${p.name}</h3>
-        ${renderStars(p.rating)}
-        
-        <a href="${p.link}" target="_blank">Ver Produto</a>
-        <div class="share-wrapper">
-          <button class="share-btn" onclick="toggleShareMenu('${type}-share-${
-            p.id
-          }')">Compartilhar</button>
-          <div class="share-menu" id="${type}-share-${p.id}">
-            <a id="btn-whats" href="https://api.whatsapp.com/send?text=${encodedName}%20${encodedLink}" target="_blank">WhatsApp</a>
-            
-              <button class="btn-copy" onclick="copyLink('${p.link}')">Copiar link</button>
+        <picture><img src="${p.img}" alt="${p.name}"></picture>
+        <div class="card-descricao">
+          <h3>${p.name}</h3>
+          ${renderStars(p.rating)}
+          
+          <a href="${p.link}" target="_blank">Ver Produto</a>
+          <div class="share-wrapper">
+            <button class="share-btn" onclick="toggleShareMenu('${type}-share-${
+              p.id
+            }')">Compartilhar</button>
+            <div class="share-menu" id="${type}-share-${p.id}">
+              <a id="btn-whats" href="https://api.whatsapp.com/send?text=${encodedName}%20${encodedLink}" target="_blank">WhatsApp</a>
+          
+                <button class="btn-copy" onclick="copyLink('${p.link}')">Copiar link</button>
+            </div>
           </div>
         </div>
       </div>
