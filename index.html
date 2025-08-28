@@ -107,9 +107,10 @@
       }
 
       .section-title {
-        font-size: 20px;
-        margin: 20px 0 10px;
+        font-size: 2rem;
+        margin: 25px;
         font-weight: bold;
+        text-align: center;
       }
 
       .products {
@@ -340,13 +341,6 @@
           <option value="acessorio">Acessórios</option>
         </select>
 
-        <select id="priceFilter">
-          <option value="all">Todos os Preços</option>
-          <option value="low">Até R$50</option>
-          <option value="medium">R$50 - R$200</option>
-          <option value="high">Acima de R$200</option>
-        </select>
-
         <div
           id="ratingFilterButtons"
           style="display: flex; gap: 5px; margin-bottom: 20px"
@@ -363,7 +357,7 @@
       <!-- Produtos em destaque -->
       <div class="section-title">Produtos em Destaque</div>
       <div class="products" id="featuredProducts"></div>
-
+      <hr>
       <!-- Lista de produtos normal -->
       <div class="section-title">Todos os Produtos</div>
       <div class="products" id="productList"></div>
@@ -405,7 +399,6 @@
           id: 1,
           name: "Tomada De Energia Extensível, Saída Extensível",
           category: "eletronicos",
-          price: 80,
           img: "./assets/D_NQ_NP_2X_616463-MLB90850184655_082025-F.webp",
           link: "https://mercadolivre.com/sec/2D4QqNA",
           rating: 4,
@@ -416,7 +409,6 @@
           id: 2,
           name: "Suporte Braço Articulado De Mesa Para Celular Tablet Tab iPad Kindle Escrivaninha",
           category: "acessorio",
-          price: 40,
           img: "./assets/br-11134207-7r98p-lls4gyaltvlj71.webp",
           link: "https://s.shopee.com.br/40WfhB4Btl",
           rating: 3,
@@ -427,7 +419,6 @@
           id: 3,
           name: "Dispositivo Anti-asfixia Automático Com Kit De Primeiros",
           category: "saude",
-          price: 150,
           img: "./assets/D_NQ_NP_967648-MLB87676143024_072025-O.webp",
           link: "https://mercadolivre.com/sec/29jkZ7R",
           rating: 5,
@@ -438,7 +429,6 @@
           id: 4,
           name: "Organizador Over The Door Homelux Theory Heavy Duty 55x14x6,",
           category: "casa",
-          price: 3500,
           img: "./assets/organizador-na-porta.webp",
           link: "https://mercadolivre.com/sec/1nemKy3",
           rating: 4,
@@ -449,7 +439,6 @@
           id: 5,
           name: "Mini Rodo Esfregão Esponja Absorvente Portátil Limpeza Multifuncional Mesa Janela",
           category: "utensilio",
-          price: 220,
           img: "./assets/mini-mop-para-pia.webp",
           link: "https://s.shopee.com.br/30e8Vlsgw8",
           rating: 5,
@@ -460,7 +449,6 @@
           id: 6,
           name: "Led Bicolor Recarregável para Celular iPhone Magsafe Android",
           category: "acessorio",
-          price: 220,
           img: "./assets/luminaria-celular.webp",
           link: "https://s.shopee.com.br/AKQjHPG5nA",
           rating: 5,
@@ -545,7 +533,6 @@
       const featuredProducts = document.getElementById("featuredProducts");
       const searchInput = document.getElementById("search");
       const categorySelect = document.getElementById("category");
-      const priceFilter = document.getElementById("priceFilter");
 
       let ratingMin = "all"; // variável global para armazenar a avaliação mínima
 
@@ -618,7 +605,6 @@
       function renderProducts() {
         const search = searchInput.value.toLowerCase();
         const category = categorySelect.value;
-        const price = priceFilter.value;
 
         // Produtos destacados
         const featured = products.filter((p) => p.featured);
@@ -628,16 +614,12 @@
         const filtered = products.filter((p) => {
           const matchSearch = p.name.toLowerCase().includes(search);
           const matchCategory = category === "all" || p.category === category;
-          let matchPrice = true;
-          if (price === "low") matchPrice = p.price <= 50;
-          if (price === "medium") matchPrice = p.price > 50 && p.price <= 200;
-          if (price === "high") matchPrice = p.price > 200;
 
           let matchRating = true;
           if (ratingMin !== "all")
             matchRating = p.rating === parseInt(ratingMin);
 
-          return matchSearch && matchCategory && matchPrice && matchRating;
+          return matchSearch && matchCategory && matchRating;
         });
 
         renderCards(productList, filtered, "product");
@@ -645,7 +627,6 @@
 
       searchInput.addEventListener("input", renderProducts);
       categorySelect.addEventListener("change", renderProducts);
-      priceFilter.addEventListener("change", renderProducts);
 
       renderProducts();
 
